@@ -4,9 +4,12 @@ using UnityEngine;
 using Obi;
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody rb;
     [SerializeField]
     private float speed = 1f;
+    [SerializeField]
+    private float rotSpeed = 1f;
     [SerializeField]
     private float ropeSpeed = 1f;
 
@@ -17,24 +20,27 @@ public class PlayerController : MonoBehaviour
     private float increaseAmount;
     private float desiredLength;
     private bool isReady = false;
-   
+    private Vector3 newPos;
+
+    [SerializeField]
+    private Joystick joystick;
+
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         currentLength = rope.restLength;
         currentLengthHelper = currentLength;
         increaseAmount = currentLength / 10f;
-        Debug.Log("Rope length is" + currentLength);
-        Debug.Log("Increase length is" + increaseAmount);
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        float mH = Input.GetAxis("Horizontal");
-        float mV = Input.GetAxis("Vertical");
-        rb.velocity = new Vector3(mH * speed, rb.velocity.y, mV * speed);
-    }
+    //void FixedUpdate()
+    //{
+    //    float mH = Input.GetAxis("Horizontal");
+    //    float mV = Input.GetAxis("Vertical");
+    //    rb.velocity = new Vector3(mH * speed, rb.velocity.y, mV * speed);
+    //}
     public void ExtendRope(int power)
     {
         desiredLength = currentLength + (increaseAmount * power);
@@ -47,11 +53,26 @@ public class PlayerController : MonoBehaviour
     {
         if (isReady)
         {
-            currentLengthHelper = Mathf.SmoothStep(currentLengthHelper, desiredLength, Time.deltaTime*ropeSpeed);
-            
+            currentLengthHelper = Mathf.SmoothStep(currentLengthHelper, desiredLength, Time.deltaTime * ropeSpeed);
+
             cursor.ChangeLength(currentLengthHelper);
         }
+        if (joystick.Direction.magnitude != 0)
+        {
+            //charAnimator.SetBool("isRunning", true);
+            newPos = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+            transform.forward = Vector3.Lerp(transform.forward ,newPos,Time.deltaTime*rotSpeed);
+            rb.velocity = (transform.forward.normalized) * speed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            //charAnimator.SetBool("isRunning", false);
+        }
+
+
     }
+
 
 }
 
