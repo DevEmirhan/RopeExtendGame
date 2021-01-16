@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 667e00f216dd5f74a8a780a9d5cc059b
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 1989289236423521904
+    second: Default Take
+  - first:
+      74: 6007417343056220348
+    second: Cry
+  - first:
+      74: -886206124811307748
+    second: Dance
+  - first:
+      74: 3213090713975557939
+    second: Dance_001
+  - first:
+      74: -7501189533082158633
+    second: Dance_002
+  - first:
+      74: 5457991352217869864
+    second: Dance_003
+  - first:
+      74: 8763770076563414043
+    second: Defeat
+  - first:
+      74: -8683127555981683169
+    second: Happyjump
+  - first:
+      74: 4440419683636432505
+    second: Happyjump_001
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: -4018026680594993342
+    second: Idle_001
+  - first:
+      74: 5934702263086006078
+    second: Idle_002
+  - first:
+      74: 5539831331247536789
+    second: Jump
+  - first:
+      74: 6480610267109901665
+    second: Landing
+  - first:
+      74: 5522812681064789136
+    second: Run
+  - first:
+      74: 7556904929827058005
+    second: SadIdle
+  - first:
+      74: -115899371804562333
+    second: Victory
+  - first:
+      74: 8751955369492985705
+    second: VictoryGest
+  - first:
+      74: 2667949614841947897
+    second: Walk
+  - first:
+      74: 2896126140899675064
+    second: Walk_001
+  - first:
+      74: 6226090137139208608
+    second: Wawing
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HairColor
+    second: {fileID: 2100000, guid: deedb8f41e5884d48b3fcb01f5dcd5fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantMain
+    second: {fileID: 2100000, guid: 9eb87a75ee94d4bcabf724c164e645de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pant_End_Highlighted
+    second: {fileID: 2100000, guid: d713d63d22a4e4c8a880655a1ff77553, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: 859dcbc3ef1f54b6fb1561c14ba05d04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SkinColor
+    second: {fileID: 2100000, guid: 92c3a1f6c8dc5482aa6ceacfa4165887, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Socks
+    second: {fileID: 2100000, guid: 2713dc86db9b64d40911b6f26cfeb6fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tshirt_End_Highlighted
+    second: {fileID: 2100000, guid: 4414e416350444917a3e2dbc4f97c649, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tshirt_Main
+    second: {fileID: 2100000, guid: 48f0a074ab6ca4317b0a0c95b9686e9f, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
