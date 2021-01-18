@@ -10,7 +10,7 @@ public class RopeExtender : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && isActive)
         {
-            other.gameObject.GetComponent<PlayerController>().ExtendRope(IncreasePower);
+            other.gameObject.GetComponentInParent<PlayerController>().ExtendRope(IncreasePower);
             isActive = false;
             Destroy(gameObject);
         }

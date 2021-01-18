@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Obi;
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
-    [SerializeField]
+ 
+    public GameObject playerModel;
     private Rigidbody rb;
     [SerializeField]
     private float speed = 1f;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = playerModel.GetComponent<Rigidbody>();
         currentLength = rope.restLength;
         currentLengthHelper = currentLength;
         increaseAmount = currentLength / 10f;
@@ -61,8 +62,8 @@ public class PlayerController : MonoBehaviour
         {
             //charAnimator.SetBool("isRunning", true);
             newPos = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
-            transform.forward = Vector3.Lerp(transform.forward ,newPos,Time.deltaTime*rotSpeed);
-            rb.velocity = (transform.forward.normalized) * speed;
+            playerModel.transform.forward = Vector3.Lerp(playerModel.transform.forward ,newPos,Time.deltaTime*rotSpeed);
+            rb.velocity = (playerModel.transform.forward.normalized) * speed;
         }
         else
         {
@@ -72,7 +73,11 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
+   
+    public void Dead(string msg)
+    {
+        GameManager.Instance.LoseGame();
+    }
 
 }
 
