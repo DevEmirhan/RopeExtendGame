@@ -33,13 +33,11 @@ public class GameManager : Singleton<GameManager>
     {
         gameState = GameState.Win;
         UIManager.Instance.Win();
-        Debug.Log("You Win");
     }
     public void LoseGame()
     {
         gameState = GameState.Lose;
         UIManager.Instance.Lose();
-        Debug.Log("You Lose");
     }
     public void RestartGame()
     {

@@ -4,8 +4,17 @@ using UnityEngine;
 using Obi;
 public class PlayerController : Singleton<PlayerController>
 {
- 
+    public bool canPlay = true;
+    //Playermodel will calculate physic operations.
     public GameObject playerModel;
+
+    [SerializeField]
+    private Animator playerAnim;
+    //Girl animations
+    [SerializeField]
+    private Animator girlAnim;
+
+    private bool isRunnning =false;
     private Rigidbody rb;
     [SerializeField]
     private float speed = 1f;
@@ -16,10 +25,13 @@ public class PlayerController : Singleton<PlayerController>
 
     public ObiRope rope;
     public ObiRopeCursor cursor;
+
     private float currentLength;
     private float currentLengthHelper;
     private float increaseAmount;
     private float desiredLength;
+
+    //This is for rope initialize
     private bool isReady = false;
     private Vector3 newPos;
 
@@ -35,13 +47,6 @@ public class PlayerController : Singleton<PlayerController>
         increaseAmount = currentLength / 10f;
     }
 
-    // Update is called once per frame
-    //void FixedUpdate()
-    //{
-    //    float mH = Input.GetAxis("Horizontal");
-    //    float mV = Input.GetAxis("Vertical");
-    //    rb.velocity = new Vector3(mH * speed, rb.velocity.y, mV * speed);
-    //}
     public void ExtendRope(int power)
     {
         desiredLength = currentLength + (increaseAmount * power);
@@ -58,26 +63,59 @@ public class PlayerController : Singleton<PlayerController>
 
             cursor.ChangeLength(currentLengthHelper);
         }
-        if (joystick.Direction.magnitude != 0)
+        if(GameManager.Instance.gameState == GameManager.GameState.Play && canPlay)
         {
-            //charAnimator.SetBool("isRunning", true);
-            newPos = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
-            playerModel.transform.forward = Vector3.Lerp(playerModel.transform.forward ,newPos,Time.deltaTime*rotSpeed);
-            rb.velocity = (playerModel.transform.forward.normalized) * speed;
+            if (joystick.Direction.magnitude != 0)
+            {
+                newPos = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+                playerModel.transform.forward = Vector3.Lerp(playerModel.transform.forward, newPos, Time.deltaTime * rotSpeed);
+                rb.velocity = (playerModel.transform.forward.normalized) * speed;
+                if (isRunnning == false)
+                {
+                    isRunnning = true;
+                    playerAnim.SetBool("Run", true);
+                }
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+                if (isRunnning == true)
+                {
+                    isRunnning = false;
+                    playerAnim.SetBool("Run", false);
+                }
+            }
         }
         else
         {
             rb.velocity = Vector3.zero;
-            //charAnimator.SetBool("isRunning", false);
         }
-
-
+    
     }
    
-    public void Dead(string msg)
+    public void Dead()
     {
+        StartCoroutine(DeathSequence());
+    }
+    IEnumerator DeathSequence()
+    {
+        playerAnim.SetBool("Lose", true);
+        girlAnim.SetBool("Lose", true);
+        canPlay = false;
+        yield return new WaitForSeconds(1.5f);
         GameManager.Instance.LoseGame();
     }
-
+    public void Win()
+    {
+        StartCoroutine(WinSequence());
+    }
+    IEnumerator WinSequence()
+    {
+        canPlay = false;
+        playerAnim.SetBool("Win", true);
+        girlAnim.SetBool("Win", true);
+        yield return new WaitForSeconds(1.5f);
+        GameManager.Instance.WinGame();
+    }
 }
 

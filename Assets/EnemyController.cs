@@ -12,11 +12,10 @@ public class EnemyController : MonoBehaviour
     private PathHolder myPaths;
     private bool isSeenPlayer;
     public Color seen;
-    //public Animator gfxAnimator;
+    public Animator enemyAnim;
     public float waitSecondsNextMove;
     private bool startedNextPos;
-    //public GameObject Warning;
-    //public GameObject powParticle;
+
 
     private void Start()
     {
@@ -29,9 +28,9 @@ public class EnemyController : MonoBehaviour
     {
         if (!canMove || GameManager.Instance.gameState != GameManager.GameState.Play)
             return;
-        Debug.Log(isSeenPlayer);
         if (!isSeenPlayer)
         {
+            //This is for further versions
             #region player dedection
             //RaycastHit hit;
             //if (Physics.Raycast(transform.position, PlayerController.Instance.transform.position - transform.position, out hit, 10))
@@ -64,11 +63,12 @@ public class EnemyController : MonoBehaviour
             if (fow.visibleTargets.Contains(PlayerController.Instance.playerModel.transform) || fowArea.visibleTargets.Contains(PlayerController.Instance.playerModel.transform))
             {
                 isSeenPlayer = true;
-                PlayerController.Instance.Dead("enemyCatched");
-               // Instantiate(powParticle, PlayerController.Instance.transform.position + Vector3.up * 2, powParticle.transform.rotation);
+                enemyAnim.SetBool("Hit", true);
+                PlayerController.Instance.Dead();
                 StopMe();
                 fow.viewMeshFilter.GetComponent<MeshRenderer>().materials[0].color = seen;
                 fowArea.viewMeshFilter.GetComponent<MeshRenderer>().materials[0].color = seen;
+                canMove = false;
                 //Warning.SetActive(true);
             }
             // player check end ---------------------------------------------
@@ -76,17 +76,18 @@ public class EnemyController : MonoBehaviour
     }
     private void SetDestination(Vector3 pos)
     {
-        //gfxAnimator.SetBool("isRunning", true);
+        enemyAnim.SetBool("Run", true);
         myNavMesh.destination = pos;
     }
     public void StopMe()
     {
         myNavMesh.isStopped = true;
-        //gfxAnimator.SetBool("isRunning", false);
+        enemyAnim.SetBool("Run", false);
     }
     private IEnumerator WaitForNextMovement()
     {
         startedNextPos = true;
+
         StopMe();
         yield return new WaitForSeconds(waitSecondsNextMove);
         if (!isSeenPlayer || canMove)

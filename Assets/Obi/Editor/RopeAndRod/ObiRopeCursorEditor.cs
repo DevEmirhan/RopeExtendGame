@@ -88,7 +88,7 @@ namespace Obi
                     Vector3 direction = pos2 - pos;
 
                     float size = HandleUtility.GetHandleSize(pos) * 0.4f;
-                    Gizmos.matrix = Matrix4x4.TRS(pos, Quaternion.LookRotation(direction), Vector3.one * size);
+                    //Gizmos.matrix = Matrix4x4.TRS(pos, Quaternion.LookRotation(direction), Vector3.one * size);
                     DrawArrow();
                 }
             }
