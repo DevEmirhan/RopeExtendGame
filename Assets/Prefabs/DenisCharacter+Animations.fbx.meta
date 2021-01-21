@@ -24,7 +24,42 @@ ModelImporter:
   - first:
       74: 8349542763059015795
     second: Armature|Walk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HairColor
+    second: {fileID: 2100000, guid: acf3893eaee804cd79c0345999e67504, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: 1d6602a6ca8bc4cdb8b62d77cd392928, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PantsEnd
+    second: {fileID: 2100000, guid: 8c499047650884877b4dac9e06a4b2f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: 59122d588bcaa47bfa3805582a838d04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SkinColor
+    second: {fileID: 2100000, guid: 5b98cc61534ce4ae68193b0dd00c9ac9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SweeterColor
+    second: {fileID: 2100000, guid: c85d154edd11544a995f4bd7d02b282b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SweeterEnd
+    second: {fileID: 2100000, guid: e2cb1eb244e8d43469900cf062f9c88f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
